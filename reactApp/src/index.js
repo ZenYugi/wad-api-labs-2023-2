@@ -8,6 +8,9 @@ import AuthProvider from "./authContext";
 import AuthHeader from "./authHeader";
 import ProtectedRoutes from "./protectedRoutes";
 
+import SignUpPage from "./signUpPage";
+
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -31,6 +34,8 @@ const App = () => {
           <Route path="/public" element={ <PublicPage /> } />
           <Route path="/" element={ <HomePage /> } />
           <Route path="/login" element={ <LoginPage /> } />
+          <Route path="/signup" element={ <SignUpPage /> } />
+
 
           <Route element={<ProtectedRoutes />}>
             <Route path="/movies" element={<Movies />} />
