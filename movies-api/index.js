@@ -6,6 +6,7 @@ import './db';
 import './seedData';
 //... other imports
 import usersRouter from './api/users';
+import passport from './authenticate';
 
 
 
@@ -27,8 +28,11 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(express.json());
+app.use(passport.initialize());
 
-app.use('/api/movies', moviesRouter);
+// Add passport.authenticate to middleware stack for protected routes​
+app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
+
 
 app.use('/api/genres', genresRouter);
 
@@ -36,6 +40,9 @@ app.use('/api/genres', genresRouter);
 app.use('/api/users', usersRouter);
 
 app.use(errHandler);
+
+
+
 
 
 
