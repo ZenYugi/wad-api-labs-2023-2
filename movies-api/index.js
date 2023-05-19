@@ -2,6 +2,14 @@ import dotenv from 'dotenv';
 import express from 'express';
 import moviesRouter from './api/movies';
 import genresRouter from './api/genres';
+
+//New 
+import popularsRouter from './api/populars';
+import topRatedRouter from './api/topRateds';
+import upcomingRouter from './api/upcomings';
+import latestRouter from './api/latest';
+//import ontheairRouter from './api/tvonair';
+
 import './db';
 import './seedData';
 //... other imports
@@ -35,6 +43,16 @@ app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRou
 
 
 app.use('/api/genres', genresRouter);
+
+app.use('/api/populars', popularsRouter);
+
+app.use('/api/topRateds', topRatedRouter);
+
+app.use('/api/upcomings', upcomingRouter);
+
+app.use('/api/latests', latestRouter);
+
+//app.use('/api/tvonair', ontheairRouter);
 
 //Users router
 app.use('/api/users', usersRouter);
